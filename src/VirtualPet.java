@@ -27,7 +27,7 @@ public class VirtualPet {
                 weight += foodItem.getWeightGain(); // if food is implemented, change these values based on the food object
                 accountBalanceUSD -= foodItem.getCost();
             } else {
-                Utility.Console.writeTUIBox("You don't have enough money;Consider making more", false, false);
+                Utility.Console.writeTUIBox("You don't have enough money;Consider making more!", false, false);
             }
         }
     }
@@ -55,7 +55,12 @@ public class VirtualPet {
             }
             if (ageYears > 12) {
                 isDead = true;
-                Utility.Console.writeTUIBox("Your pet is dead, haha.", false, false);
+                Utility.Console.writeTUIBox("Your pet is dead, haha.", true, false);
+                Utility.Console.writeTUIBox("Would you like to end the game?; 1) Yes; 2) No", false, true);
+                int choice = Utility.Console.getNumericalInput(1, 2);
+                if (choice == 1) {
+                    throw new Error("Your pet died, and you decided to quit :(");
+                }
             }
         }
     }
